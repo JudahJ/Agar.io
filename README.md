@@ -1,8 +1,8 @@
-# Agar.io
+#Turtle.io
 
-This project is a simplified recreation of the game Agar.io. It was built using Python turtle graphics. The game supports two-player gameplay, allowing players to compete to grow their player blob by consuming food and each other. It uses OOP; the different classes handle: movement mechanics, collision detection, and growth of the players.
+This project is a simplified recreation of the game Agar.io. It was built using Python turtle graphics. The game supports two-player gameplay, allowing players to compete to grow their player shape by consuming food and each other. It uses OOP; the different classes handle: movement mechanics, collision detection, and growth of the players.
 
- Features
+Features:
 
  1. Two-Player Gameplay
 - Player 1 Controlled using arrow keys ('Up', 'Down', 'Left', 'Right').
@@ -13,11 +13,8 @@ This project is a simplified recreation of the game Agar.io. It was built using 
 - Players grow in size when they consume food.
 
  3. Collision Detection
-- Players can eat each other if one blob is significantly larger than the other.
-- Dynamic game-over sequence displays the winner.
-
- 4. Turtle Graphics
-- Uses Python's `turtle` module for graphics, making the game lightweight and easy to run.
+- Players can eat each other if one blob is larger than the other.
+- When there is only one player left, the program writes the winner on the screen.
 
 
 
