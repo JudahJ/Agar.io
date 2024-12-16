@@ -12,6 +12,7 @@ screen.listen()
 
 #List of colors
 Color_list = ["pink", "orange", "purple", "brown", "cyan"]
+
 # Base Player Class
 class Players:
     def __init__(self, Shape, Speed, Color, playerSize, xcor, ycor):
@@ -123,10 +124,10 @@ class Collision:
         screen.bye()  # Closes the game window
 
 # Setup Players and Food
-player1 = Player_1("turtle", 20, "red", 1, -350, 0)
+player1 = Player_1("turtle", 20, "red", 1, 350, 0)
 player1.setup_controls()
 
-player2 = Player_2("turtle", 20, "blue", 1, 350, 0)
+player2 = Player_2("turtle", 20, "blue", 1, -350, 0)
 player2.setup_controls()
 
 food = Food(15) 
