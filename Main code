@@ -1,0 +1,37 @@
+
+
+from turtle import *
+import random
+import time
+
+# Screen Setup
+screen = Screen()
+screen.title("Turtle.io")
+screen.bgcolor("white")
+screen.tracer(0)
+screen.setup(width=800, height=600)
+screen.listen()
+
+#List of colors
+Color_list = ["pink", "orange", "purple", "brown", "cyan"]
+# Base Player Class
+class Players:
+    def __init__(self, Shape, Speed, Color, playerSize, xcor, ycor):
+        self.Shape = Shape
+        self.Speed = Speed
+        self.Color = Color
+        self.size = playerSize
+        self.xcor = xcor
+        self.ycor = ycor
+        self.Player = Turtle()
+        self.Player.penup()
+        self.Player.goto(xcor, ycor)
+        self.Player.shape(Shape)
+        self.Player.shapesize(playerSize)
+        self.Player.color(Color)
+        self.Player.penup()
+
+
+
+while True:
+    screen.update()
