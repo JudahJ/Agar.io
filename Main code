@@ -32,6 +32,58 @@ class Players:
         self.Player.penup()
 
 
+# Movement controls
+class Controls(Players):
+    def move_up(self):
+        self.Player.setheading(90)
+        y = self.Player.ycor() + self.Speed
+        if y < 290:  # Top of the screen
+            self.Player.sety(y)
 
+    def move_down(self): 
+        self.Player.setheading(270)
+        y = self.Player.ycor() - self.Speed
+        if y > -290:  # Bottom of the screen
+            self.Player.sety(y)
+
+    def move_left(self):
+        self.Player.setheading(180)
+        x = self.Player.xcor() - self.Speed
+        if x > -390:  # Left side of the screen
+            self.Player.setx(x)
+
+    def move_right(self):
+        self.Player.setheading(0)
+        x = self.Player.xcor() + self.Speed
+        if x < 390:  # Right side of the screen
+            self.Player.setx(x)
+
+#Arrow key inputs for player 1
+class Player_1(Controls):
+    def setup_controls(self):
+        screen.onkey(self.move_up, "Up")
+        screen.onkey(self.move_down, "Down")
+        screen.onkey(self.move_left, "Left")
+        screen.onkey(self.move_right, "Right")
+
+#WASD input for player 2
+class Player_2(Controls):
+    def setup_controls(self):
+        screen.onkey(self.move_up, "w")
+        screen.onkey(self.move_down, "s")
+        screen.onkey(self.move_left, "a")
+        screen.onkey(self.move_right, "d")
+
+
+# Setup Players
+player1 = Player_1("turtle", 20, "red", 1, -350, 0)
+player1.setup_controls()
+
+player2 = Player_2("turtle", 20, "blue", 1, 350, 0)
+player2.setup_controls()
+
+
+# Main Game Loop
 while True:
     screen.update()
+
