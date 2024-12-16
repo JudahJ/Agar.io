@@ -1,5 +1,3 @@
-
-
 from turtle import *
 import random
 import time
@@ -74,16 +72,47 @@ class Player_2(Controls):
         screen.onkey(self.move_left, "a")
         screen.onkey(self.move_right, "d")
 
+#This class drops food in random spots across the map
+class Food:
+    def __init__(self, num_of_food):
+        self.food_list = []
+        for _ in range(num_of_food):
+            blob = Turtle()
+            blob.shape("circle")
+            blob.color(random.choice(Color_list))
+            blob.penup()
+            blob.speed(0)
+            blob.goto(random.randint(-390, 390), random.randint(-290, 290))
+            self.food_list.append(blob)
 
-# Setup Players
+#Class for eating food and eating other player
+class Collision:
+    def __init__(self, player1, player2, food_class):
+        self.player1 = player1
+        self.player2 = player2
+        self.food_class = food_class
+
+    def check_food_collision(self, player):
+        for blob in self.food_class.food_list:
+            if player.Player.distance(blob) < (player.size * 10 + 15):  # Each time the player grows, so does the hitbox
+                blob.goto(random.randint(-390, 390), random.randint(-290, 290))  # change foods position
+                player.size += 0.1  # Grow player
+                player.Player.shapesize(player.size)
+
+
+# Setup Players and Food
 player1 = Player_1("turtle", 20, "red", 1, -350, 0)
 player1.setup_controls()
 
 player2 = Player_2("turtle", 20, "blue", 1, 350, 0)
 player2.setup_controls()
 
+food = Food(15) 
+collision = Collision(player1, player2, food)
 
 # Main Game Loop
 while True:
     screen.update()
-
+    collision.check_food_collision(player1)
+    collision.check_food_collision(player2)
+    collision.check_player_collision()
