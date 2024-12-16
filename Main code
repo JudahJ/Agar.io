@@ -99,6 +99,28 @@ class Collision:
                 player.size += 0.1  # Grow player
                 player.Player.shapesize(player.size)
 
+    def check_player_collision(self):
+        if self.player1.Player.distance(self.player2.Player) < (self.player1.size * 10 + 5):
+            if self.player1.size > self.player2.size:
+                player2.Player.hideturtle()
+                player1.Player.shapesize(player1.size + player2.size) #Add player2 size to player1's
+                screen.update()
+                time.sleep(1)
+                self.end_game("Red Wins!", Turtle())
+            elif self.player1.size < self.player2.size:
+                player1.Player.hideturtle()
+                player2.Player.shapesize(player2.size + player1.size) #grow player1's size  to player2's
+                screen.update()
+                time.sleep(1)
+                self.end_game("Blue Wins!", Turtle())
+
+    def end_game(self, message, pen):
+        pen.goto(-150,0)
+        screen.clear()
+        screen.update() #Show the player being eaten
+        pen.write(message, move=False, align='left', font=('Times New Roman', 50, 'normal'))
+        time.sleep(2)
+        screen.bye()  # Closes the game window
 
 # Setup Players and Food
 player1 = Player_1("turtle", 20, "red", 1, -350, 0)
